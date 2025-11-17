@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Status Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #f9fafb;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+        }
+        .property-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-in_progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .status-cancelled {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Transaction Status Update</h1>
+    </div>
+    
+    <div class="content">
+        <p>Hello {{ user.first_name|default:user.username }},</p>
+        
+        <p>The status of your transaction has been updated.</p>
+        
+        <div class="property-info">
+            <h2>{{ property.title }}</h2>
+            <p><strong>Location:</strong> {{ property.city }}, {{ property.state }}</p>
+            <p><strong>Sale Price:</strong> ${{ transaction.sale_price|floatformat:0 }}</p>
+            <p><strong>Commission:</strong> ${{ transaction.commission_amount|floatformat:0 }}</p>
+            
+            <p><strong>New Status:</strong></p>
+            <span class="status-badge status-{{ transaction.status }}">
+                {{ status }}
+            </span>
+            
+            {% if transaction.transaction_date %}
+            <p><strong>Transaction Date:</strong> {{ transaction.transaction_date }}</p>
+            {% endif %}
+            
+            {% if transaction.closing_date %}
+            <p><strong>Closing Date:</strong> {{ transaction.closing_date }}</p>
+            {% endif %}
+        </div>
+        
+        <p>You can view more details by logging into your account.</p>
+        
+        <center>
+            <a href="{{ settings.FRONTEND_URL }}/transactions" class="button">View Transaction</a>
+        </center>
+    </div>
+    
+    <div class="footer">
+        <p>RIVERHEDGE PARTNERS LIMITED<br>
+        Real Estate Platform</p>
+        <p>This is an automated email. Please do not reply.</p>
+    </div>
+</body>
+</html>
+

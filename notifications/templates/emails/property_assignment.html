@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Property Assignment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #f9fafb;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+        }
+        .property-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .property-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #3b82f6;
+            margin: 10px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+        .badge-available {
+            background: #d1fae5;
+            color: #065f46;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏠 New Property Assignment</h1>
+    </div>
+    
+    <div class="content">
+        <p>Hello {{ agent.first_name|default:agent.username }},</p>
+        
+        <p>You have been assigned a new property to manage!</p>
+        
+        <div class="property-card">
+            <h2>{{ property.title }}</h2>
+            
+            <div class="price">${{ property.price|floatformat:0 }}</div>
+            
+            <p><strong>Type:</strong> {{ property.get_property_type_display }}</p>
+            <p><strong>Status:</strong> <span class="badge badge-available">{{ property.get_status_display }}</span></p>
+            
+            <p><strong>Location:</strong><br>
+            {{ property.address }}<br>
+            {{ property.city }}, {{ property.state }} {{ property.zip_code }}</p>
+            
+            {% if property.bedrooms or property.bathrooms %}
+            <p><strong>Details:</strong><br>
+            {% if property.bedrooms %}{{ property.bedrooms }} Bedrooms{% endif %}
+            {% if property.bathrooms %} | {{ property.bathrooms }} Bathrooms{% endif %}
+            {% if property.square_feet %} | {{ property.square_feet }} sq ft{% endif %}
+            </p>
+            {% endif %}
+            
+            {% if property.description %}
+            <p><strong>Description:</strong><br>
+            {{ property.description|truncatewords:50 }}</p>
+            {% endif %}
+        </div>
+        
+        <p>Please review the property details and begin your work on this listing.</p>
+        
+        <center>
+            <a href="{{ settings.FRONTEND_URL }}/properties/{{ property.id }}" class="button">View Property Details</a>
+        </center>
+    </div>
+    
+    <div class="footer">
+        <p>RIVERHEDGE PARTNERS LIMITED<br>
+        Real Estate Platform</p>
+        <p>This is an automated email. Please do not reply.</p>
+    </div>
+</body>
+</html>
+

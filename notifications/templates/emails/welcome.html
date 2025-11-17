@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to RIVERHEDGE PARTNERS LIMITED</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .content {
+            background: #f9fafb;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+        }
+        .feature-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        .feature-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">🏢</div>
+        <h1>Welcome to RIVERHEDGE PARTNERS LIMITED</h1>
+        <p>Your Real Estate Platform</p>
+    </div>
+    
+    <div class="content">
+        <p>Hello {{ user.first_name|default:user.username }},</p>
+        
+        <p>Welcome to RIVERHEDGE PARTNERS LIMITED Real Estate Platform! We're excited to have you on board.</p>
+        
+        <p>Your account has been successfully created and you now have access to our comprehensive real estate management system.</p>
+        
+        <h3>What You Can Do:</h3>
+        
+        <div class="feature-box">
+            <span class="feature-icon">🏠</span>
+            <strong>Manage Properties</strong><br>
+            Browse, create, and manage property listings with detailed information and images.
+        </div>
+        
+        <div class="feature-box">
+            <span class="feature-icon">💰</span>
+            <strong>Track Transactions</strong><br>
+            Monitor sales, commissions, and transaction status in real-time.
+        </div>
+        
+        <div class="feature-box">
+            <span class="feature-icon">📊</span>
+            <strong>View Analytics</strong><br>
+            Access comprehensive reports and analytics to track your business performance.
+        </div>
+        
+        <div class="feature-box">
+            <span class="feature-icon">🔔</span>
+            <strong>Get Notifications</strong><br>
+            Stay updated with real-time notifications for important events and changes.
+        </div>
+        
+        <div class="feature-box">
+            <span class="feature-icon">📈</span>
+            <strong>Material Price Tracking</strong><br>
+            Monitor construction material prices and get alerts on significant changes.
+        </div>
+        
+        <div class="feature-box">
+            <span class="feature-icon">🧮</span>
+            <strong>Cost Estimates</strong><br>
+            Create detailed cost estimates for construction and renovation projects.
+        </div>
+        
+        <p>Ready to get started?</p>
+        
+        <center>
+            <a href="{{ settings.FRONTEND_URL }}/dashboard" class="button">Go to Dashboard</a>
+        </center>
+        
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <strong>Need Help?</strong><br>
+            If you have any questions or need assistance, please don't hesitate to contact our support team.
+        </p>
+    </div>
+    
+    <div class="footer">
+        <p><strong>RIVERHEDGE PARTNERS LIMITED</strong><br>
+        Real Estate Platform</p>
+        <p>This is an automated email. Please do not reply.</p>
+    </div>
+</body>
+</html>
+
