@@ -1,4 +1,4 @@
-# Real Estate Software Platform
+# RIVERHEDGE PARTNERS LIMITED - Real Estate Platform
 
 A comprehensive real estate management platform with building materials price tracking, cost estimation, property management, and investment analysis features.
 
@@ -378,4 +378,3 @@ For support, please contact: support@riverhedgepartners.com
 - React documentation
 - Tailwind CSS
 - Vite build tool
-
